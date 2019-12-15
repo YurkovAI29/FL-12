@@ -1,0 +1,190 @@
+@mixin button {
+    padding: 20px 45px;
+    background-color: $header_btn_bgcolor;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+}
+@mixin link  {
+    color: #fff;
+    font-weight: bold;
+}
+
+$font-weight: ("bold": bold, "normal": normal);
+
+body {
+    
+    background-color: $content_bg;
+}
+.header {
+    max-width: 1920px;
+    padding: 130px 140px;
+    padding-bottom: 175px;
+    border-radius: (0 0 30% 0);
+    background-image: $header_bg;
+    background-repeat: no-repeat;
+    font-family: $header_fonts_hind;
+    color: $header_text_color;
+}
+.landing-logo {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    p {
+        margin-left: 15px;
+        font-weight: map-get($font-weight, "bold");
+        font-size: 16px;
+        
+        span {
+            display: block;
+            font-size: 8px;
+            font-weight: map-get($font-weight, "normal");
+        }
+    }
+}
+.header_heading {
+    margin-top: 70px;
+    margin-bottom: 25px;
+    font-size: 72px;
+    font-weight: bold;
+    width: 500px;
+    position: relative;
+    z-index: 2;
+    line-height: 80px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        z-index: -1;
+        width: 302px;
+        height: 41px;
+        background-color: $marker_color;
+    }
+}
+.header_text {
+    white-space: pre-line;
+    margin-bottom: 40px;
+}
+.header_button {
+    @include button;
+}
+.login {
+    @include link;
+}
+.header-wrap div:last-child {
+    display: flex;
+    justify-content: space-between;
+    width: 450px;
+    align-items: center;
+}
+.section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: $header_text_color;
+    font-family: $main_fonts_SSP;
+    padding-bottom: 80px;
+
+    .section_text {
+        position: relative;
+        font-size: 40px;
+        &::before {
+            @extend .header_heading::before;
+            bottom: 5px;
+            left: 205px;
+            width: 170px;
+            height: 32px;
+        }
+    }
+
+    .section_card {
+        display: flex;
+        width: 910px;
+        padding: 20px;
+        margin-bottom: 30px;
+        background-color: $main_card_bgcolor;
+        color: $main_card_text_color;
+        font-family: $card_fonts;
+
+        .section_card_right_container {
+            padding-left: 90px;
+            padding-right: 110px;
+        }
+
+        .section_card_heading {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .section_link {
+            @include link;
+            color: $main_card_text_color;
+        }
+    }
+
+    .section_banner {
+        margin: auto;
+        position: absolute;
+        left: 0; 
+        bottom: -50px; 
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 700px;
+        padding: 0 160px;
+        background: linear-gradient(to right, $first_color_gradient, $second_color_gradient);
+        text-align: left;
+
+        .section_banner_heading {
+            font-size: 20px;
+            font-weight: bold;
+            color: $header_text_color;
+            position: relative;
+            z-index: 2;
+
+            &::before {
+                @extend .header_heading::before;
+                bottom: 0;
+                left: 80px;
+                width: 45px;
+                height: 20px;
+            }
+        }
+
+        .section_banner_text {
+            text-align: justify;
+            color: $main_card_text_color;
+        }
+
+        .section_banner_button {
+            @include button;
+        }
+    }
+}
+.footer-wrap {
+    background-color: $main_card_bgcolor;
+    padding: 50px 190px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: $card_fonts;
+    color: #ffffff;
+
+    .footer_logo {
+        @extend .landing-logo;
+        color: #ffffff;
+    }
+
+    .footer_text {
+        position: relative;
+        width: 340px;
+    }
+}
